@@ -14,6 +14,7 @@ import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.squareup.picasso.Picasso
 import ru.geekbrains.weather_app.R
 import ru.geekbrains.weather_app.databinding.FragmentDetailsBinding
+import ru.geekbrains.weather_app.model.City
 import ru.geekbrains.weather_app.model.Weather
 import ru.geekbrains.weather_app.utils.showSnackBar
 import ru.geekbrains.weather_app.viewmodel.AppState
@@ -50,16 +51,16 @@ class DetailsFragment : Fragment() {
         when (appState) {
             is AppState.Success -> {
                 binding.mainView.visibility = View.VISIBLE
-                binding.loadingLayout.visibility = View.GONE
+                binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
                 setWeather(appState.weatherData[0])
             }
             is AppState.Loading -> {
                 binding.mainView.visibility = View.GONE
-                binding.loadingLayout.visibility = View.VISIBLE
+                binding.includedLoadingLayout.loadingLayout.visibility = View.VISIBLE
             }
             is AppState.Error -> {
                 binding.mainView.visibility = View.VISIBLE
-                binding.loadingLayout.visibility = View.GONE
+                binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.mainView.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
@@ -100,6 +101,17 @@ class DetailsFragment : Fragment() {
                 .load(chosenHeaderPicture)
                 .into(headerIcon)
         }
+    }
+
+    private fun saveCity(city: City, weather: Weather) {
+        viewModel.saveCityToDB(
+            Weather(
+                city,
+                weather.temperature,
+                weather.feelsLike,
+                weather.condition
+            )
+        )
     }
 
     private fun getHeaderPicture(cityName: String) {
