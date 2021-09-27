@@ -2,8 +2,8 @@ package ru.geekbrains.weather_app.app
 
 import android.app.Application
 import androidx.room.Room
-import com.example.androidonkotlin.room.HistoryDao
-import com.example.androidonkotlin.room.HistoryDatabase
+import ru.geekbrains.weather_app.room.HistoryDao
+import ru.geekbrains.weather_app.room.HistoryDatabase
 
 class App : Application() {
 

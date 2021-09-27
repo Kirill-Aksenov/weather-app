@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_history_recyclerview_item.view.*
 import ru.geekbrains.weather_app.R
 import ru.geekbrains.weather_app.model.Weather
 

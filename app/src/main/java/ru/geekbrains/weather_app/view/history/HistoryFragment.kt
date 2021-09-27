@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.fragment_history.*
 import ru.geekbrains.weather_app.R
 import ru.geekbrains.weather_app.databinding.FragmentHistoryBinding
 import ru.geekbrains.weather_app.utils.showSnackBar
