@@ -10,6 +10,7 @@ import ru.geekbrains.weather_app.R
 import ru.geekbrains.weather_app.view.contacts.ContentProviderFragment
 import ru.geekbrains.weather_app.view.history.HistoryFragment
 import ru.geekbrains.weather_app.view.main.MainFragment
+import ru.geekbrains.weather_app.view.maps.GoogleMapsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +52,16 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
+            R.id.menu_google_maps -> {
+                supportFragmentManager.apply {
+                    beginTransaction()
+                        .add(R.id.container, GoogleMapsFragment())
+                        .addToBackStack("")
+                        .commitAllowingStateLoss()
+                }
+                true
+            }
+
             else -> return super.onOptionsItemSelected(item)
         }
     }
